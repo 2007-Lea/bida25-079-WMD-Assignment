@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dipheko Private Hospital – Book Appointment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="hospital_style.css"/>
+</head>
+<body>
+  <nav>
+    <span class="logo-main">DIPHEKO</span>
+    <span class="logo-sub">PRIVATE HOSPITAL</span>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="departments.html">Departments</a></li>
+      <li><a href="appointment.html" class="active">Appointments</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="appointment.html" class="nav-appt">Book Now</a>
+  </nav>
+
+  <div class="page">
+    <div class="bg-logo" aria-hidden="true">DIPHEKO</div>
+    <div class="content">
+      <p class="page-tag">Skip the Queue</p>
+      <h1 class="page-title">Book an Appointment</h1>
+
+      <div class="appt-layout">
+        <div class="info-cards">
+          <div class="info-card">
+            <div class="info-card-top"><div class="info-card-icon">⏱️</div><div class="info-card-title">Save Time</div></div>
+            <p>Book online and arrive at your scheduled slot — no more sitting in long queues at the hospital.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-card-top"><div class="info-card-icon">📋</div><div class="info-card-title">All Departments</div></div>
+            <p>Choose from General Practice, Emergency, Cardiology or Maternity. We'll match you to the right doctor.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-card-top"><div class="info-card-icon">📞</div><div class="info-card-title">Confirmation</div></div>
+            <p>After booking you will receive a confirmation via phone or email with your appointment reference number.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-card-top"><div class="info-card-icon">🚨</div><div class="info-card-title">Emergency</div></div>
+            <p>For emergencies do NOT book online. Call us immediately at <strong style="color:#ff6b6b">+267 000 0000</strong>.</p>
+          </div>
+        </div>
+
+        <div class="form-box">
+          <h3>Patient Booking Form</h3>
+          <p>Please fill in all required fields. We will confirm your appointment within 24 hours.</p>
+
+          <div class="form-row">
+            <div class="form-group"><label>First Name *</label><input type="text" id="firstName" placeholder="e.g. Thabo"/></div>
+            <div class="form-group"><label>Last Name *</label><input type="text" id="lastName" placeholder="e.g. Dipheko"/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Phone Number *</label><input type="tel" id="phone" placeholder="+267 000 0000"/></div>
+            <div class="form-group"><label>Email Address</label><input type="email" id="email" placeholder="you@email.com"/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Department *</label>
+              <select id="dept">
+                <option value="">-- Select Department --</option>
+                <option>General Practice</option>
+                <option>Emergency</option>
+                <option>Cardiology</option>
+                <option>Maternity</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Preferred Doctor</label>
+              <select id="doctor">
+                <option value="">-- Select Doctor --</option>
+                <option>Dr. A. Modise (General Practice)</option>
+                <option>Dr. B. Setlhare (General Practice)</option>
+                <option>Dr. C. Tau (Emergency)</option>
+                <option>Dr. D. Kgosi (Emergency)</option>
+                <option>Dr. E. Motswedi (Cardiology)</option>
+                <option>Dr. F. Nkwe (Cardiology)</option>
+                <option>Dr. G. Molebatsi (Maternity)</option>
+                <option>Dr. H. Sehume (Maternity)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Preferred Date *</label><input type="date" id="apptDate"/></div>
+            <div class="form-group"><label>Preferred Time *</label><input type="time" id="apptTime"/></div>
+          </div>
+          <div class="form-group"><label>Reason for Visit</label><textarea id="reason" placeholder="Briefly describe your symptoms or reason for the appointment..."></textarea></div>
+          <button class="submit-btn" onclick="handleSubmit()">Confirm Booking</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup-overlay" id="popup">
+    <div class="popup-box">
+      <div class="popup-icon">✅</div>
+      <div class="popup-title">Submitted!</div>
+      <p class="popup-msg">Your appointment request has been received. Dipheko Private Hospital will contact you within 24 hours to confirm your booking.</p>
+      <p class="popup-ref" id="popupRef">REF: DPH-0000</p>
+      <button class="popup-close" onclick="closePopup()">Done</button>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('load', function() {
+      const params = new URLSearchParams(window.location.search);
+      const dept   = params.get('dept');
+      const doctor = params.get('doctor');
+      if (dept) {
+        const sel = document.getElementById('dept');
+        for (let i = 0; i < sel.options.length; i++) {
+          if (sel.options[i].value === dept.replace(/\+/g,' ')) { sel.selectedIndex = i; break; }
+        }
+      }
+      if (doctor) {
+        const sel  = document.getElementById('doctor');
+        const name = doctor.replace(/\+/g,' ');
+        for (let i = 0; i < sel.options.length; i++) {
+          if (sel.options[i].text.startsWith(name)) { sel.selectedIndex = i; break; }
+        }
+      }
+    });
+
+    function handleSubmit() {
+      const first = document.getElementById('firstName').value.trim();
+      const last  = document.getElementById('lastName').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const dept  = document.getElementById('dept').value;
+      const date  = document.getElementById('apptDate').value;
+      const time  = document.getElementById('apptTime').value;
+      if (!first || !last || !phone || !dept || !date || !time) {
+        alert('Please fill in all required fields (marked with *).'); return;
+      }
+      const ref = 'DPH-' + Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('popupRef').textContent = 'REF: ' + ref;
+      document.getElementById('popup').classList.add('show');
+      ['firstName','lastName','phone','email','reason','apptDate','apptTime'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('dept').selectedIndex = 0;
+      document.getElementById('doctor').selectedIndex = 0;
+    }
+
+    function closePopup() { document.getElementById('popup').classList.remove('show'); }
+    document.getElementById('popup').addEventListener('click', function(e) { if (e.target === this) closePopup(); });
+  </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dipheko Private Hospital – Departments</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="hospital_style.css"/>
+</head>
+<body>
+  <nav>
+    <span class="logo-main">DIPHEKO</span>
+    <span class="logo-sub">PRIVATE HOSPITAL</span>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="departments.html" class="active">Departments</a></li>
+      <li><a href="appointment.html">Appointments</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="appointment.html" class="nav-appt">Book Now</a>
+  </nav>
+
+  <div class="page">
+    <div class="bg-logo" aria-hidden="true">DIPHEKO</div>
+    <div class="content">
+      <p class="page-tag">Medical Specialities</p>
+      <h1 class="page-title">Our Departments</h1>
+
+      <div class="dept-grid">
+        <div class="dept-card">
+          <div class="dept-icon">🏥</div>
+          <div class="dept-name">General Practice</div>
+          <p class="dept-desc">Your first point of care. Our GPs handle routine checkups, minor illnesses, referrals and preventive health screenings.</p>
+          <div class="dept-doctors">👨‍⚕️ 6 Doctors Available</div>
+          <a href="appointment.html?dept=General+Practice" class="dept-btn">Book Appointment</a>
+        </div>
+        <div class="dept-card">
+          <div class="dept-icon">🚨</div>
+          <div class="dept-name">Emergency</div>
+          <p class="dept-desc">Open 24 hours, 7 days a week. Our emergency unit is fully equipped to handle trauma, acute illness and life-threatening conditions.</p>
+          <div class="dept-doctors">👨‍⚕️ 4 Doctors On Call</div>
+          <a href="appointment.html?dept=Emergency" class="dept-btn">Book Appointment</a>
+        </div>
+        <div class="dept-card">
+          <div class="dept-icon">❤️</div>
+          <div class="dept-name">Cardiology</div>
+          <p class="dept-desc">Specialised heart care including ECGs, stress tests, echocardiography and management of cardiovascular conditions.</p>
+          <div class="dept-doctors">👨‍⚕️ 3 Cardiologists</div>
+          <a href="appointment.html?dept=Cardiology" class="dept-btn">Book Appointment</a>
+        </div>
+        <div class="dept-card">
+          <div class="dept-icon">🤱</div>
+          <div class="dept-name">Maternity</div>
+          <p class="dept-desc">Comprehensive maternity care from antenatal checkups to delivery and postnatal support, led by experienced obstetricians and midwives.</p>
+          <div class="dept-doctors">👩‍⚕️ 5 Specialists</div>
+          <a href="appointment.html?dept=Maternity" class="dept-btn">Book Appointment</a>
+        </div>
+      </div>
+
+      <p class="section-label">Meet Our <span>Doctors</span></p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Doctor</th><th>Department</th><th>Qualification</th>
+              <th>Experience</th><th>Available Days</th>
+              <th>Slot Time</th><th>Status</th><th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Dr. A. Modise</td><td>General Practice</td><td>MBChB</td><td>10 years</td><td>Mon – Fri</td><td>08:00 – 16:00</td><td class="avail-yes">● Available</td><td><button class="book-btn" onclick="location.href='appointment.html?doctor=Dr.+A.+Modise'">Book</button></td></tr>
+            <tr><td>Dr. B. Setlhare</td><td>General Practice</td><td>MBChB, Dip PEC</td><td>7 years</td><td>Mon – Sat</td><td>09:00 – 17:00</td><td class="avail-yes">● Available</td><td><button class="book-btn" onclick="location.href='appointment.html?doctor=Dr.+B.+Setlhare'">Book</button></td></tr>
+            <tr><td>Dr. C. Tau</td><td>Emergency</td><td>MBChB, FCS</td><td>12 years</td><td>24/7 On Call</td><td>All Hours</td><td class="avail-yes">● Available</td><td><button class="book-btn" onclick="location.href='appointment.html?doctor=Dr.+C.+Tau'">Book</button></td></tr>
+            <tr><td>Dr. D. Kgosi</td><td>Emergency</td><td>MBChB, FCEM</td><td>9 years</td><td>24/7 On Call</td><td>All Hours</td><td class="avail-no">● Off Duty</td><td><button class="book-btn" onclick="location.href='appointment.html?doctor=Dr.+D.+Kgosi'">Book</button></td></tr>
+            <tr><td>Dr. E. Motswedi</td><td>Cardiology</td><td>MBChB, FCP(Cardio)</td><td>15 years</td><td>Tue, Thu, Fri</td><td>08:00 – 14:00</td><td class="avail-yes">● Available</td><td><button class="book-btn" onclick="location.href='appointment.html?doctor=Dr.+E.+Motswedi'">Book</button></td></tr>
+            <tr><td>Dr. F. Nkwe</td><td>Cardiology</td><td>MBChB, MMed</td><td>11 years</td><td>Mon, Wed</td><td>10:00 – 16:00</td><td class="avail-no">● Off Duty</td><td><button class="book-btn" onclick="location.href='appointment.html?doctor=Dr.+F.+Nkwe'">Book</button></td></tr>
+            <tr><td>Dr. G. Molebatsi</td><td>Maternity</td><td>MBChB, FCOG</td><td>14 years</td><td>Mon – Fri</td><td>07:00 – 15:00</td><td class="avail-yes">● Available</td><td><button class="book-btn" onclick="location.href='appointment.html?doctor=Dr.+G.+Molebatsi'">Book</button></td></tr>
+            <tr><td>Dr. H. Sehume</td><td>Maternity</td><td>MBChB, Midwifery</td><td>8 years</td><td>Mon – Sat</td><td>08:00 – 16:00</td><td class="avail-yes">● Available</td><td><button class="book-btn" onclick="location.href='appointment.html?doctor=Dr.+H.+Sehume'">Book</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
