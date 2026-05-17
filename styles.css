@@ -2,6 +2,7 @@
 /* ---- RESET & BASE ---- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+
 html, body {
   min-height: 100%;
   font-family: 'Barlow', sans-serif;
@@ -12,7 +13,6 @@ html, body {
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 
-/* ---- NAVBAR ---- */
 nav {
   position: fixed; top: 0; left: 0; right: 0;
   height: 70px; z-index: 100;
@@ -73,22 +73,19 @@ nav {
 
 .nav-appt:hover { background: #00c8c8; }
 
-/* ---- PAGE WRAPPER ---- */
 .page {
   padding-top: 70px; min-height: 100vh;
   position: relative;
   background: radial-gradient(ellipse 70% 60% at 70% 50%, rgba(0,100,120,0.12) 0%, transparent 70%), #04111f;
 }
 
-/* home page uses full height with no scroll */
 .page-home {
-  padding-top: 70px; height: 100vh;
+ padding-top: 70px; height: 100vh;
   position: relative; overflow: hidden;
   display: flex; flex-direction: column;
   background: radial-gradient(ellipse 70% 60% at 70% 50%, rgba(0,100,120,0.12) 0%, transparent 70%), #04111f;
 }
 
-/* ---- BACKGROUND WATERMARK ---- */
 .bg-logo {
   position: fixed; top: 50%; left: 50%;
   transform: translate(-50%, -50%);
@@ -97,18 +94,32 @@ nav {
   font-size: clamp(6rem, 16vw, 17rem);
   letter-spacing: 0.04em;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(0,168,168,0.05);
+  -webkit-text-stroke: 2px rgba(0,168,168,0.15);
   white-space: nowrap;
   pointer-events: none; user-select: none; z-index: 0;
 }
 
-/* ---- CONTENT WRAPPER ---- */
+.page-home {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.hero-image {
+  position: absolute;
+  right: 0;
+  top: 70px;
+  width: 45%;
+  height: calc(100vh - 70px - 80px);
+  object-fit: cover;
+  opacity: 0.3;
+  border-radius: 12px 0 0 12px;
+}
+
 .content {
   position: relative; z-index: 1;
   padding: 60px 6%;
 }
 
-/* ---- PAGE HEADER ---- */
 .page-tag {
   font-size: 0.75rem; font-weight: 600;
   letter-spacing: 4px; text-transform: uppercase;
@@ -130,7 +141,6 @@ nav {
   animation: fadeUp 0.7s ease both;
 }
 
-/* ---- BUTTONS ---- */
 .btn-primary {
   display: inline-block;
   background: #00a8a8; color: #04111f;
@@ -153,7 +163,6 @@ nav {
 }
 .btn-outline:hover { border-color: #00a8a8; background: rgba(0,168,168,0.07); }
 
-/* ---- HOME: HERO ---- */
 .hero {
   flex: 1; display: flex; align-items: center;
   padding: 0 7%; position: relative; z-index: 1;
@@ -186,7 +195,6 @@ nav {
 
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 
-/* ---- HOME: BOTTOM BAR ---- */
 .bottom-bar {
   position: relative; z-index: 1;
   display: flex; align-items: center; gap: 32px;
@@ -307,7 +315,6 @@ td { padding: 14px 20px; font-size: 0.9rem; color: #b0ccd4; white-space: nowrap;
 }
 .book-btn:hover { background: #00a8a8; color: #04111f; }
 
-/* ---- APPOINTMENT PAGE ---- */
 .appt-layout {
   display: grid;
   grid-template-columns: 1fr 1.6fr;
@@ -389,7 +396,6 @@ td { padding: 14px 20px; font-size: 0.9rem; color: #b0ccd4; white-space: nowrap;
 }
 .submit-btn:hover { background: #00c8c8; transform: translateY(-2px); }
 
-/* ---- ABOUT PAGE ---- */
 .about-intro {
   font-size: 1.1rem; font-weight: 300;
   color: #b0ccd4; line-height: 1.9;
@@ -422,7 +428,6 @@ td { padding: 14px 20px; font-size: 0.9rem; color: #b0ccd4; white-space: nowrap;
 .story h2 span { color: #00a8a8; }
 .story p { font-size: 0.95rem; color: #7aa8b8; line-height: 1.9; margin-bottom: 14px; }
 
-/* ---- CONTACT PAGE ---- */
 .emergency-banner {
   background: rgba(220,50,50,0.1);
   border: 1px solid rgba(220,50,50,0.3);
@@ -452,7 +457,6 @@ td { padding: 14px 20px; font-size: 0.9rem; color: #b0ccd4; white-space: nowrap;
 .info-value { font-size: 0.9rem; color: #b0ccd4; line-height: 1.6; }
 .info-icon  { font-size: 1.4rem; margin-top: 2px; }
 
-/* ---- POPUP ---- */
 .popup-overlay {
   display: none;
   position: fixed; inset: 0; z-index: 999;
@@ -486,13 +490,11 @@ td { padding: 14px 20px; font-size: 0.9rem; color: #b0ccd4; white-space: nowrap;
 }
 .popup-close:hover { background: #00c8c8; }
 
-/* ---- ANIMATIONS ---- */
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes popUp  { from { opacity: 0; transform: scale(0.85); } to { opacity: 1; transform: scale(1); } }
 @keyframes pulse  { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-/* ---- RESPONSIVE ---- */
 @media (max-width: 768px) {
   .appt-layout    { grid-template-columns: 1fr; }
   .contact-layout { grid-template-columns: 1fr; }
@@ -502,4 +504,97 @@ td { padding: 14px 20px; font-size: 0.9rem; color: #b0ccd4; white-space: nowrap;
   .nav-links { gap: 1.2rem; }
   .values-grid { grid-template-columns: 1fr 1fr; }
   .bottom-bar { flex-wrap: wrap; gap: 16px; padding: 16px 5%; }
+}
+
+.hero-image {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 45%;
+  height: calc(100% - 80px);
+  object-fit: cover;
+  opacity: 0.2;
+  border-radius: 12px 0 0 12px;
+  z-index: 0;
+}
+
+.hero-image-overlay {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 45%;
+  height: calc(100% - 80px);
+  background: linear-gradient(to right, #04111f 0%, transparent 40%),
+              linear-gradient(to top, #04111f 0%, transparent 20%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: rgba(4,17,31,0.95);
+  border-top: 1px solid rgba(0,168,168,0.2);
+}
+
+.page-bg-img {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.1;
+  z-index: 0;
+  pointer-events: none;
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  margin-left: auto;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: #e8f4f4;
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(4,17,31,0.98);
+    padding: 20px;
+    gap: 1rem;
+    border-bottom: 1px solid rgba(0,168,168,0.2);
+    z-index: 999;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-appt {
+    display: none;
+  }
 }

@@ -20,6 +20,11 @@
       <li><a href="contact.html" class="active">Contact</a></li>
     </ul>
     <a href="appointments.html" class="nav-appt">Book Now</a>
+  <button class="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
   </nav>
 
   <div class="page">
@@ -37,7 +42,7 @@
         <div class="info-cards">
           <div class="info-card"><div><div class="info-label">Phone</div><div class="info-value">+267 000 1234 (General)<br/>+267 000 0000 (Emergency)</div></div></div>
           <div class="info-card"><div><div class="info-label">Email</div><div class="info-value">info@diphekohospital.co.bw<br/>appointments@diphekohospital.co.bw</div></div></div>
-          <div class="info-card"><div><div class="info-label">Location</div><div class="info-value">Your street address here,<br/>Gaborone, Botswana</div></div></div>
+          <div class="info-card"><div><div class="info-label">Location</div><div class="info-value">Our Building, <br/>Gaborone,Main Mall PLOT 2507 Botswana</div></div></div>
           <div class="info-card"><div><div class="info-label">Hours</div><div class="info-value">Mon – Fri: 07:00 – 20:00<br/>Sat: 08:00 – 16:00<br/>Emergency: 24/7</div></div></div>
         </div>
 
@@ -78,5 +83,10 @@
     function closePopup() { document.getElementById('popup').classList.remove('show'); }
     document.getElementById('popup').addEventListener('click', function(e) { if (e.target === this) closePopup(); });
   </script>
+  <script>
+  function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('open');
+  }
+</script>
 </body>
 </html>
